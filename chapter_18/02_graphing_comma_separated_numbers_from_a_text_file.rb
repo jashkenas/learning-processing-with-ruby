@@ -4,11 +4,12 @@
 def setup
   size 200, 200
   # The text from the file is loaded into an array. 
-  stuff = load_strings("data-1.txt")
+  stuff = File.readlines("#{sketch_path}/data/data-1.txt")
 
   # This array has one element because the file only has one line. 
   # Convert String into an array of integers using ',' as a delimiter
-  @data = int(split(stuff.first, ","))
+  @data = stuff.first.split(',')
+  @data.map! {|num| num.to_i }
 end
 
 def draw

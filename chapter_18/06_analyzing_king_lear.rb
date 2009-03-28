@@ -5,7 +5,7 @@ def setup
   size 200, 200
 
   # Load the font
-  textFont loadFont("Georgia-Bold-16.vlw")
+  text_font load_font("Georgia-Bold-16.vlw")
 
   # Where are we in the text (start later b/c Project Gutenberg has 
   # licensing info at beginning)
@@ -20,12 +20,12 @@ def setup
 
   # All the lines in King Lear are first joined as one big String and 
   # then split up into an array of individual words. 
-  # Note the use of splitTokens() since we are using spaces and 
+  # Note the use of split() since we are using spaces and 
   # punctuation marks all as delimiters.  
-  delimiters = " ,.?!;:[]"
-  @kinglear  = split_tokens(everything, delimiters)
+  delimiters = /[ ,.?!;:\[\]]/
+  @kinglear  = everything.split(delimiters)
 
-  frameRate 5
+  frame_rate 5
 end
 
 def draw

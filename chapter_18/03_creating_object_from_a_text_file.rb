@@ -6,14 +6,14 @@ def setup
   smooth
 
   # Load text file as an array of Strings
-  data = load_strings("data-2.txt")
+  data = File.readlines("#{sketch_path}/data/data-2.txt")
 
   # The size of the array of Bubble objects is determined by the 
   # total number of lines in the text file.
   @bubbles = []
   data.each do |datum|
     # Each line is split into an array of floating point numbers.
-    values = float(split(datum, "," )) 
+    values = datum.split(',').map {|d| d.to_f }
     # The values in the array are passed into the Bubble class constructor.
     @bubbles << Bubble.new(*values)
   end
@@ -35,10 +35,8 @@ class Bubble
   # The constructor initializes color and size
   # Location is filled randomly
   def initialize(r, g, diameter)
-    @x        = $app.random($app.width)
-    @y        = $app.height
-    @r        = r
-    @g        = g
+    @x, @y    = $app.random($app.width), $app.height
+    @r, @g    = r, g
     @diameter = diameter
   end
 
@@ -53,8 +51,6 @@ class Bubble
   def drift
     @y += $app.random(-3, -0.1)
     @x += $app.random(-1, 1)
-    if @y < -@diameter * 2
-      @y = $app.height + @diameter * 2 
-    end
+    @y = $app.height + @diameter * 2 if @y < -@diameter * 2
   end
 end

@@ -10,21 +10,20 @@ def setup
   # Creating and starting the request
   # An array of XML elements can be retrieved using getElementArray. 
   # This only works for elements with the same name that appear multiple times in the XML document.
-  @xmlRequest = XMLRequest.new(self, "http://rss.news.yahoo.com/rss/topstories")
-  @xmlRequest.makeRequest
+  @request = XMLRequest.new(self, "http://rss.news.yahoo.com/rss/topstories")
+  @request.makeRequest
 end
 
 def draw
   # When a request is finished the data the available 
   # flag is set to true - and we get a chance to read
   # the data returned by the request
-  if @xmlRequest.available?
+  if @request.available?
     # Retrieving an array of all XML elements inside "  title*  " tags
-    headlines = @xmlRequest.getElementArray("title")
-    headlines.each do |headline|
-      puts headline # XXX: was println(headlines[i]);
-    end
-    noLoop # Nothing to see here
+    headlines = @request.get_element_array("title")
+    # XXX: was println(headlines[i]);
+    headlines.each {|line| puts line }
+    no_loop # Nothing to see here
   end
 end
 

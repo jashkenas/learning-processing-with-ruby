@@ -4,16 +4,17 @@
 def setup
   size 200, 200
   smooth
+  @file_path = "#{sketch_path}/data/data-2.txt"
 
   # Load text file as an array of Strings
-  data = load_strings("data-2.txt")
+  data = File.readlines(@file_path)
 
   # The size of the array of Bubble objects is determined by the 
   # total number of lines in the text file.
   @bubbles = []
   data.each do |datum|
     # Each line is split into an array of floating point numbers.
-    values = float(split(datum, ","))
+    values = datum.split(',').map {|num| num.to_f }
     # The values in the array are passed into the Bubble class constructor.
     @bubbles << Bubble.new(*values)
   end
@@ -48,7 +49,7 @@ def save_data
 
   # Save to File
   # The same file is overwritten by adding the data folder path to saveStrings().
-  save_strings("data/data-2.txt", data)
+  File.open(@file_path, 'w') {|file| file.write(data.join("\n")) }
 end
 
 #

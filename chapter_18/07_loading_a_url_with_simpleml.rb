@@ -12,8 +12,8 @@ def setup
 
   # Create and make an asynchronous request using
   # the Request object from the library
-  @htmlRequest = HTMLRequest.new(self, "http://www.yahoo.com")
-  @htmlRequest.makeRequest
+  @request = HTMLRequest.new(self, "http://www.yahoo.com")
+  @request.makeRequest
   @timer = Timer.new(5000)
   @timer.start
   background 0
@@ -25,7 +25,7 @@ def draw
   # A request is made every 5s. 
   # The data is not received here, however, this is only the request.  
   if @timer.finished?
-    @htmlRequest.makeRequest
+    @request.make_request
     # XXX: was println("Making request!");
     puts "Making request!" 
     @timer.start
@@ -34,10 +34,10 @@ def draw
   # When a request is finished the data the available 
   # flag is set to true - and we get a chance to read
   # the data returned by the request
-  if @htmlRequest.available?
-    @html = @htmlRequest.readRawSource # Read the raw data
-    @back = 255                        # Reset background
-    puts "Request completed!"          # Print message 
+  if @request.available?
+    @html = @request.read_raw_source # Read the raw data
+    @back = 255                    # Reset background
+    puts "Request completed!"      # Print message 
   end
 
   # Draw some lines with colors based on characters from data retrieved
@@ -72,23 +72,23 @@ end
 # Timer Class from Chapter 10
 #
 class Timer
-  def initialize(tempTotalTime)
-    @totalTime = tempTotalTime
-    @running   = false
+  def initialize(total_time)
+    @total_time = total_time
+    @running    = false
   end
 
   def start
-    @running   = true
-    @savedTime = $app.millis
+    @running    = true
+    @saved_time = $app.millis
   end
 
   def finished?
-    passedTime = $app.millis - @savedTime
-    if @running && (passedTime > @totalTime)
+    finished = $app.millis - @saved_time > @total_time      
+    if @running && finished
       @running = false
-      return true;
+      return true
     else
-      return false;
+      return false
     end
   end
 end

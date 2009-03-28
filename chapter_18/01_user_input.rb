@@ -3,9 +3,8 @@
 #
 def setup
   size 300, 200
-  @typing = ""
-  @saved  = ""
-  textFont createFont "Arial", 16, true # set the font for text
+  @typing, @saved = "", ""
+  text_font create_font "Arial", 16, true # set the font for text
 end
 
 def draw
@@ -28,6 +27,6 @@ def keyPressed
     # Otherwise, concatenate the String
     # Each character typed by the user is added to the 
     # end of the String variable.
-    @typing = @typing + key 
+    @typing = @typing + key if key.is_a? String 
   end
 end

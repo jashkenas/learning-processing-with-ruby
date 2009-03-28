@@ -3,7 +3,7 @@
 #
 def setup
   size 200, 200
-  textFont createFont("Georgia",16, true)
+  text_font create_font("Georgia",16, true)
 
   # Make a WeatherGrabber object
   @counter = 0
@@ -73,7 +73,7 @@ class WeatherGrabber
 
     # Searching for temperature
     lookfor      = "temp=\""
-    @temperature = $app.int(give_me_text_between(xml, lookfor, endmarker))
+    @temperature = give_me_text_between(xml, lookfor, endmarker).to_i
   end
 
   # A function that returns a substring between two substrings

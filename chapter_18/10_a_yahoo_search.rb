@@ -13,24 +13,12 @@ end
 
 def draw
   background 255
-  
-  # When a request is finished the available 
-  # flag is set to true - and we get a chance to read
-  # the data returned by the request
+  # XXX: There are still issues related to events from imported library
+  #      so we call the search_event method ourselves
+  # When a request is finished the available flag is set to true 
+  # and we get a chance to read the data returned by the request
   if @yahoo.available?
-    # Get Titles and URLs
-    titles = @yahoo.get_titles
- 
-    # Search results arrive as an array of Strings. 
-    # You can also get the summaries with getSummaries().
-    urls = @yahoo.get_urls
-
-    titles.each_with_index do |title, i|
-      puts "__________"
-      puts title
-      puts urls[i]
-    end
-    
+    search_event(@yahoo)
     no_loop
   end
 end
@@ -42,18 +30,16 @@ def mouse_pressed
   @yahoo.search "processing.org"
 end
 
-# XXX: There are still issues related to events from imported library
-#      so we're not implementing this yet.
-#def search_event(yahoo)
-#  # Get Titles and URLs
-#  titles = yahoo.get_titles
-#  # Search results arrive as an array of Strings. 
-#  # You can also get the summaries with getSummaries().
-#  urls = yahoo.get_urls
-#
-#  titles.each_with_index do |title, i|
-#    puts "__________"
-#    puts title
-#    puts urls[i]
-#  end
-#end
+def search_event(yahoo)
+  # Get Titles and URLs
+  titles = yahoo.get_titles
+  # Search results arrive as an array of Strings. 
+  # You can also get the summaries with getSummaries().
+  urls = yahoo.get_urls
+
+  titles.each_with_index do |title, i|
+    puts "__________"
+    puts title
+    puts urls[i]
+  end
+end

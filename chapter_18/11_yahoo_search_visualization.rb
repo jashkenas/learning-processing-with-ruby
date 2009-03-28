@@ -11,7 +11,7 @@ def setup
   size 500, 300
   text_font create_font("Georgia", 20, true)
   smooth
-  
+
   # Search for all names
   # The search() function is called for each name in the array.
   @yahoo = []
@@ -21,7 +21,7 @@ def setup
     @yahoo << YahooSearch.new(self, "YOUR API KEY HERE")
     @yahoo.last.search(name)
   end
-  
+
   @bubbles     = { }
   @search_count = 0
 end
@@ -45,15 +45,15 @@ def search_event(yahoo)
   # getTotalResultsAvailable() returns the total number of web pages that Yahoo found containing the search phrase. 
   # These numbers can be quite large so they are scaled down before being used as an ellipse size.
   total = yahoo.get_total_results_available
-  
+
   # Scale down the number so that it can be viewable
   r = sqrt(total) / 75.0
-  
+
   # Make a new bubble object
   # The search data is used to make a Bubble object for the visualization.
   search = yahoo.get_search_string
   return if @bubbles.has_key? search
-  
+
   b = Bubble.new(search, r, 50 + @search_count * 100, $app.height / 2)
   @bubbles[search] = b
   @search_count   += 1
@@ -69,7 +69,7 @@ class Bubble
     @x = x
     @y = y    
   end
-  
+
   def display
     $app.stroke 0
     $app.fill 0, 50

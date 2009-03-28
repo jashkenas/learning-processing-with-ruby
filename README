@@ -1,1 +1,30 @@
-let's roll
+___  / ___________ _________________(_)_____________ _
+__  /  _  _ \  __ `/_  ___/_  __ \_  /__  __ \_  __ `/
+_  /___/  __/ /_/ /_  /   _  / / /  / _  / / /  /_/ / 
+/_____/\___/\__,_/ /_/    /_/ /_//_/  /_/ /_/_\__, /  
+                                             /____/   
+________                                      _____                
+___  __ \________________________________________(_)_____________ _
+__  /_/ /_  ___/  __ \  ___/  _ \_  ___/_  ___/_  /__  __ \_  __ `/
+_  ____/_  /   / /_/ / /__ /  __/(__  )_(__  )_  / _  / / /  /_/ / 
+/_/     /_/    \____/\___/ \___//____/ /____/ /_/  /_/ /_/_\__, /  
+                                                          /____/   
+          ________________       ________       ______          
+___      ____(_)_  /___  /_      ___  __ \___  ____  /______  __
+__ | /| / /_  /_  __/_  __ \     __  /_/ /  / / /_  __ \_  / / /
+__ |/ |/ /_  / / /_ _  / / /     _  _, _// /_/ /_  /_/ /  /_/ / 
+____/|__/ /_/  \__/ /_/ /_/      /_/ |_| \__,_/ /_.___/_\__, /  
+                                                       /____/ 
+
+
+"Learning Processing" is a 2008 book that serves as a gentle introduction to 
+the theory and practice of programming. It works by introducing code concepts 
+over the course of 23 chapters, and creating a series of examples that build 
+on them. The book was written by professor Daniel Shiffman of the ITP in 
+New York City.
+
+More information about the book can be found at:
+http://www.learningprocessing.com/
+
+These samples have been ported over to Ruby-Processing, which can be found here:
+http://wiki.github.com/jashkenas/ruby-processing

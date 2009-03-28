@@ -31,13 +31,12 @@ def draw
     @timer.start
   end
 
-  # When a request is finished the data the available 
-  # flag is set to true - and we get a chance to read
-  # the data returned by the request
+  # XXX: There are still issues related to events from imported library
+  #      so we call the net_event method ourselves
+  # When a request is finished the data the available flag is set to true 
+  # and we get a chance to read the data returned by the request
   if @request.available?
-    @html = @request.read_raw_source # Read the raw data
-    @back = 255                    # Reset background
-    puts "Request completed!"      # Print message 
+    net_event(@request)
   end
 
   # Draw some lines with colors based on characters from data retrieved
@@ -57,16 +56,13 @@ def draw
   @back    = constrain(@back - 1, 0, 255)
 end
 
-# XXX: There are still issues related to events from imported library
-#      so we're not implementing this yet.
 # When a request is finished the data is received in the netEvent() 
 # function which is automatically called whenever data is ready.
-#def net_event(ml) 
-#  @html = ml.readRawSource      # Read the raw data
-#  @back = 255                   # Reset background
-#  # XXX: was println("Request completed!");
-#  puts "Request completed!"     # Print message 
-#end
+def net_event(ml) 
+  @html = ml.readRawSource      # Read the raw data
+  @back = 255                   # Reset background
+  puts "Request completed!"     # Print message 
+end
 
 #
 # Timer Class from Chapter 10

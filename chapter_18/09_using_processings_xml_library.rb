@@ -55,21 +55,6 @@ class Bubble
     @diameter = diameter
   end
 
-  # XXX: Unused - probably best to remove instead
-  # True or False if point is inside circle
-  #def rollover(mx, my)
-  #  return $app.dist(mx, my, @x, @y) < @diameter / 2
-  #end
-  
-  
-  # XXX: Unused - probably best to remove instead
-  # Change Bubble variables
-  #def change
-  #  @r = $app.constrain(@r + $app.random(-10, 10), 0, 255)
-  #  @g = $app.constrain(@g + $app.random(-10, 10), 0, 255)
-  #  @diameter = $app.constrain(@diameter + $app.random(-2, 4), 4, 72)
-  #end
-
   # Display Bubble
   def display
     $app.stroke 0

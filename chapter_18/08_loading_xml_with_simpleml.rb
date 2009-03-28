@@ -15,26 +15,22 @@ def setup
 end
 
 def draw
-  # When a request is finished the data the available 
-  # flag is set to true - and we get a chance to read
-  # the data returned by the request
+  # XXX: There are still issues related to events from imported library
+  #      so we call the net_event method ourselves
+  # When a request is finished the data the available flag is set to true 
+  # and we get a chance to read the data returned by the request
   if @request.available?
-    # Retrieving an array of all XML elements inside "  title*  " tags
-    headlines = @request.get_element_array("title")
-    # XXX: was println(headlines[i]);
-    headlines.each {|line| puts line }
-    no_loop # Nothing to see here
+    net_event(@request)
+    no_loop
   end
 end
 
-# XXX: There are still issues related to events from imported library
-#      so we're not implementing this yet.
 # When a request is finished the data is received in the netEvent() 
 # function which is automatically called whenever data is ready.
-# def net_event(ml)
-#   # Retrieving an array of all XML elements inside "  title*  " tags
-#   headlines = ml.getElementArray("title")
-#   headlines.each do |headline|
-#     puts headline # XXX: was println(headlines[i]);
-#   end
-# end
+def net_event(ml)
+  # Retrieving an array of all XML elements inside "  title*  " tags
+  headlines = ml.getElementArray("title")
+  headlines.each do |headline|
+    puts headline # XXX: was println(headlines[i]);
+  end
+end

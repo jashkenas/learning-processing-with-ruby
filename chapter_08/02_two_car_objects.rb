@@ -18,14 +18,14 @@ class TwoCarObjects < Processing::App
   end
   
   def draw
-  background 255
+    background 255
   
-  # Operate the car object in draw
-  # by calling object methods using the dots syntax.
-  @red_car.move(@red_car_speed)
-  @red_car.display_car
-  @blue_car.move(@blue_car_speed)
-  @blue_car.display_car
+    # Operate the car object in draw
+    # by calling object methods using the dots syntax.
+    @red_car.move(@red_car_speed)
+    @red_car.display_car
+    @blue_car.move(@blue_car_speed)
+    @blue_car.display_car
   end
     
 end

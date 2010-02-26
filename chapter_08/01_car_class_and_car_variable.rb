@@ -9,12 +9,12 @@ class CarClassAndCarVariable < Processing::App
   end
   
   def draw
-  background 255
-  
-  # Operate the car object in draw
-  # by calling object methods using the dots syntax.
-  @my_car.move
-  @my_car.display_car
+    background 255
+    
+    # Operate the car object in draw
+    # by calling object methods using the dots syntax.
+    @my_car.move
+    @my_car.display_car
   end
     
 end
